@@ -14,7 +14,7 @@ jobs:
       run: |
         echo "Symbolic link" > longfilename.txt
         ln -s longfilename.txt inter.txt
-        ls -s inter.txt s.txt
+        ln -s inter.txt s.txt
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
