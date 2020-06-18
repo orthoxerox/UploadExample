@@ -13,7 +13,8 @@ jobs:
     - name: Build
       run: |
         echo "Symbolic link" > longfilename.txt
-        ln -s longfilename.txt s.txt
+        ln -s longfilename.txt inter.txt
+        ls -s inter.txt s.txt
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
@@ -25,7 +26,8 @@ jobs:
     - name: Build
       run: |
         echo "Hard link" > longfilename.txt
-        ln longfilename.txt h.txt
+        ln longfilename.txt inter.txt
+        ln inter.txt h.txt
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
