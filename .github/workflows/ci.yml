@@ -1,0 +1,33 @@
+name: Symbolic
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  symbolic:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build
+      run: |
+        echo "Symbolic link" > longfilename.txt
+        ln -s longfilename.txt s.txt
+    - name: Upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: Symbolic
+        path: s.txt
+  hard:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build
+      run: |
+        echo "Hard link" > longfilename.txt
+        ln longfilename.txt h.txt
+    - name: Upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: Hard
+        path: h.txt
